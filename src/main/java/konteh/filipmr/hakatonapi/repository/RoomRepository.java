@@ -4,4 +4,5 @@ import konteh.filipmr.hakatonapi.entity.Room;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoomRepository extends JpaRepository<Room, Long> {
+    public Room findRoomByName(String name);
 }

@@ -36,6 +36,15 @@ public class DeskController {
         return new ResponseEntity<>(retVal, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/desks?room={room}")
+    public ResponseEntity getDesksWhereRoom(@PathVariable String name) {
+        final List<Desk> retVal = deskService.getAllByRoomName(name).stream()
+                .map(Desk::new)
+                .collect(Collectors.toList());
+
+        return new ResponseEntity<>(retVal, HttpStatus.OK);
+    }
+
     @DeleteMapping(value = "/desks/{id}")
     public void deleteDesk(@PathVariable Long id) {
         deskService.deleteDesk(id);
